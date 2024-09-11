@@ -635,7 +635,23 @@ Using **`CustomApiResponse<T>`** simplifies error handling and data return strat
 <br/>
 
 <h2 align="center">⚒️ Languages-Frameworks ⚒️</h2>
+
+In this project, several libraries are utilized to enhance functionality, improve code quality, and streamline development:
+
+* **`Microsoft.EntityFrameworkCore.SqlServer:`** Used for working with SQL Server databases in Entity Framework Core, providing an ORM layer for data access.
+
+* **`FluentValidation.AspNetCore:`** A popular library for validating models in .NET applications. It integrates seamlessly with ASP.NET Core, enabling model validation through fluent API rules.
+
+* **`Serilog.AspNetCore:`** A logging library that offers structured logging for .NET applications. It is highly configurable and supports various sinks, making it easy to log data to different outputs like files, databases, and third-party services.
+
+* **`Autofac.Extensions.DependencyInjection:`** A dependency injection library that enhances the default DI container in ASP.NET Core. It provides more advanced features such as property injection, module configuration, and dynamic scanning of assemblies for dependencies.
+
+* **`Autofac.Extras.DynamicProxy:`** Used for aspect-oriented programming (AOP) in conjunction with Autofac. This library allows for the creation of interceptors, which can add cross-cutting concerns like logging, caching, or validation without modifying the core business logic.
+
+These libraries together form the backbone of the application's architecture, facilitating robust data handling, validation, logging, and dependency management.
+
 <br/>
+
 <div align="center">
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" height="55" alt="csharp logo" />
   <img width="12" />
