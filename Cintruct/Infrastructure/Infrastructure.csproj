@@ -4,7 +4,39 @@
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <PackageId>Cinctruct.Infrastructure</PackageId>
+    <Title>This NuGet package provides a comprehensive infrastructure for modern software development.</Title>
+    <Version>1.0.0</Version>
+    <Authors>Emirhan CİNCİ</Authors>
+    <Company>Emirhan CİNCİ</Company>
+    <Product>Cintruct.Infrastructure</Product>
+    <Description>It includes features such as generic systems, AOP (Aspect-Oriented Programming) supported validation and performance monitoring, custom error handling, extension methods, email sending, file operations, encryption, and API response generalization.</Description>
+    <Copyright>Copyright 2024</Copyright>
+    <PackageIcon>cinci.png</PackageIcon>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <RepositoryUrl>https://github.com/EmirhanCinci/Cintruct.Infrastructure</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>AOP OOP Validation Map Extensions Infrastructure</PackageTags>
+    <PackageReleaseNotes>Cintrct.Infrastructure Nuget Package</PackageReleaseNotes>
+    <NeutralLanguage>tr</NeutralLanguage>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\..\..\..\cinci.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Include="..\..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Include="..\..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="10.0.0" />
