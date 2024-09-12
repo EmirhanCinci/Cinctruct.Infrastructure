@@ -1,4 +1,4 @@
-<h1>Cintruct NuGet Package</h1>
+<h1>Cinctruct NuGet Package</h1>
 
 <h3 align="center">
     <img src="https://readme-typing-svg.herokuapp.com/?font=Righteous&size=35&center=true&vCenter=true&width=500&height=70&duration=4000&lines=Comprehensive+Solutions+for;+Modern+Software,;+All+in+One+Package!;" />
@@ -26,7 +26,7 @@ This NuGet package provides a comprehensive infrastructure for modern software d
 You can install the package from NuGet using the following command:
 
 ``` bash
-dotnet add package Cintruct.Infrastructure
+dotnet add package Cinctruct.Infrastructure
 ```
 
 <h2>Usage</h2>
