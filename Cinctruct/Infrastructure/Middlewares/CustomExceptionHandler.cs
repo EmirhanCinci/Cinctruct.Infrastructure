@@ -9,62 +9,69 @@ using System.Text.Json;
 
 namespace Infrastructure.Middlewares
 {
-    public static class CustomExceptionHandler
-    {
-        public static void UseCustomException(this IApplicationBuilder app)
-        {
-            app.UseExceptionHandler(config =>
-            {
-                config.Run(async context =>
-                {
-                    List<string> errorMessages = new List<string>();
-                    var statusCode = StatusCodes.Status500InternalServerError;
-                    context.Response.ContentType = "application/json";
-                    var exceptionFeature = context.Features.Get<IExceptionHandlerFeature>();
-                    switch (exceptionFeature?.Error)
-                    {
-                        case NoContentException:
-                            statusCode = StatusCodes.Status204NoContent;
-                            errorMessages.Add(exceptionFeature.Error.Message);
-                            break;
-                        case ArgumentException:
-                            statusCode = StatusCodes.Status400BadRequest;
-                            errorMessages.Add(exceptionFeature.Error.Message);
-                            break;
-                        case BadRequestException:
-                            statusCode = StatusCodes.Status400BadRequest;
-                            errorMessages.Add(exceptionFeature.Error.Message);
-                            break;
-                        case BusinessRuleException:
-                            statusCode = StatusCodes.Status400BadRequest;
-                            errorMessages.Add(exceptionFeature.Error.Message);
-                            break;
-                        case ValidationException:
-                            statusCode = StatusCodes.Status400BadRequest;
-                            var errors = exceptionFeature.Error.Message.Split("-");
-                            foreach (var error in errors)
-                            {
-                                errorMessages.Add(error.Trim());
-                            }
-                            break;
-                        case NotFoundException:
-                            statusCode = StatusCodes.Status404NotFound;
-                            errorMessages.Add(exceptionFeature.Error.Message);
-                            break;
-                        case InvalidOperationException:
-                            statusCode = StatusCodes.Status422UnprocessableEntity;
-                            errorMessages.Add(exceptionFeature.Error.Message);
-                            break;
-                        default:
-                            statusCode = StatusCodes.Status500InternalServerError;
-                            errorMessages.Add(SystemMessages.InternalServerError);
-                            break;
-                    }
-                    context.Response.StatusCode = statusCode;
-                    var response = CustomApiResponse<NoData>.Fail(statusCode, errorMessages);
-                    await context.Response.WriteAsync(JsonSerializer.Serialize(response));
-                });
-            });
-        }
-    }
+	/// <summary>
+	/// Provides custom exception handling middleware for an ASP.NET Core application.
+	/// </summary>
+	public static class CustomExceptionHandler
+	{
+		/// <summary>
+		/// Adds custom exception handling middleware to the application's request pipeline.
+		/// </summary>
+		/// <param name="app">The application builder instance used to configure the middleware.</param>
+		public static void UseCustomException(this IApplicationBuilder app)
+		{
+			app.UseExceptionHandler(config =>
+			{
+				config.Run(async context =>
+				{
+					List<string> errorMessages = new List<string>();
+					var statusCode = StatusCodes.Status500InternalServerError;
+					context.Response.ContentType = "application/json";
+					var exceptionFeature = context.Features.Get<IExceptionHandlerFeature>();
+					switch (exceptionFeature?.Error)
+					{
+						case NoContentException:
+							statusCode = StatusCodes.Status204NoContent;
+							errorMessages.Add(exceptionFeature.Error.Message);
+							break;
+						case ArgumentException:
+							statusCode = StatusCodes.Status400BadRequest;
+							errorMessages.Add(exceptionFeature.Error.Message);
+							break;
+						case BadRequestException:
+							statusCode = StatusCodes.Status400BadRequest;
+							errorMessages.Add(exceptionFeature.Error.Message);
+							break;
+						case BusinessRuleException:
+							statusCode = StatusCodes.Status400BadRequest;
+							errorMessages.Add(exceptionFeature.Error.Message);
+							break;
+						case ValidationException:
+							statusCode = StatusCodes.Status400BadRequest;
+							var errors = exceptionFeature.Error.Message.Split("-");
+							foreach (var error in errors)
+							{
+								errorMessages.Add(error.Trim());
+							}
+							break;
+						case NotFoundException:
+							statusCode = StatusCodes.Status404NotFound;
+							errorMessages.Add(exceptionFeature.Error.Message);
+							break;
+						case InvalidOperationException:
+							statusCode = StatusCodes.Status422UnprocessableEntity;
+							errorMessages.Add(exceptionFeature.Error.Message);
+							break;
+						default:
+							statusCode = StatusCodes.Status500InternalServerError;
+							errorMessages.Add(SystemMessages.InternalServerError);
+							break;
+					}
+					context.Response.StatusCode = statusCode;
+					var response = CustomApiResponse<NoData>.Fail(statusCode, errorMessages);
+					await context.Response.WriteAsync(JsonSerializer.Serialize(response));
+				});
+			});
+		}
+	}
 }

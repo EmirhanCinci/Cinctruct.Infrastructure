@@ -2,8 +2,11 @@
 
 namespace Infrastructure.Model.Dtos.Implementations
 {
-    public abstract class BaseFilterDto : IDto
-    {
-        public bool? IsDeleted { get; set; }
-    }
+	/// <summary>
+	/// Provides a base Data Transfer Object (DTO) for filtering data with a deletion status.
+	/// </summary>
+	public abstract class BaseFilterDto : IDto
+	{
+		public bool? IsDeleted { get; set; }
+	}
 }

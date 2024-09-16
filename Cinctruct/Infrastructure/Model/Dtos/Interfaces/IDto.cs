@@ -1,7 +1,10 @@
 ﻿namespace Infrastructure.Model.Dtos.Interfaces
 {
-    public interface IDto
-    {
+	/// <summary>
+	/// Marker interface for Data Transfer Objects (DTOs).
+	/// </summary>
+	public interface IDto
+	{
 
-    }
+	}
 }
