@@ -1,4 +1,6 @@
-﻿using Infrastructure.Utilities.IoC.Interfaces;
+﻿using Infrastructure.CrossCuttingConcerns.Caching.Implementations.Microsoft;
+using Infrastructure.CrossCuttingConcerns.Caching.Interfaces;
+using Infrastructure.Utilities.IoC.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using System.Diagnostics;
@@ -16,7 +18,9 @@ namespace Infrastructure.Utilities.IoC.Implementations
 		/// <param name="services">The collection of services to which the module should add services.</param>
 		public void Load(IServiceCollection services)
 		{
+			services.AddMemoryCache();
 			services.AddSingleton<Stopwatch>();
+			services.AddSingleton<ICacheService, CacheService>();
 			services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 		}
 	}
