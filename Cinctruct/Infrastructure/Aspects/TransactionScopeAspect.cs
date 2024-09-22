@@ -16,7 +16,7 @@ namespace Infrastructure.Aspects
 		/// <param name="invocation">Method invocation information.</param>
 		public override void Intercept(IInvocation invocation)
 		{
-			using (TransactionScope transactionScope = new TransactionScope())
+			using (TransactionScope transactionScope = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled))
 			{
 				try
 				{
